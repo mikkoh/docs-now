@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+  <title>Docs Now</title>
+
+  <link rel="stylesheet" type="text/css" href="main.css"></link>
+
+  <!-- start templates -->
+  <script type="x-template" id="menu-template">
+    <template v-if="$data">
+      <h1 v-text="$data.name"></h1>
+      <ul id="menu" v-if="$data.modules">
+        <li v-repeat="$data.modules" v-text="$key" v-on="click: onClick"></li>
+      </ul>
+      <div v-if="!$data.modules">No Dependencies</div>
+    </template>
+  </script>
+
+  <script type="x-template" id="docs-template">
+    <div id="docs" v-if="$data" v-html="$data.html">
+    </div>
+  </script>
+  <!-- end templates -->
+</head>
+<body>
+  <div id="menu-container"></div>
+  <div id="docs-container"></div>
+</body>
+<script type="text/javascript" src="./bundle.js"></script>
+</html>

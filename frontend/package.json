@@ -1,0 +1,20 @@
+{
+  "name": "docs-now-frontend",
+  "version": "1.0.0",
+  "description": "Render markdown for all modules used in a project in the browser",
+  "main": "index.js",
+  "license": "MIT",
+  "author": {
+    "name": "Mikko Haapoja",
+    "email": "me@mikkoh.com",
+    "url": "https://github.com/mikkoh"
+  },
+  "dependencies": {
+    "bigwheel": "^1.2.1",
+    "bluebird": "^2.9.10",
+    "get-object-path": "0.0.2",
+    "vue": "^0.11.5",
+    "xhr-json": "^2.2.4"
+  },
+  "devDependencies": {}
+}

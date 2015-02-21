@@ -1,0 +1,37 @@
+{
+  "name": "docs-now",
+  "version": "1.0.0",
+  "description": "Render markdown for all modules used in a project in the browser",
+  "main": "index.js",
+  "license": "MIT",
+  "author": {
+    "name": "Mikko Haapoja",
+    "email": "me@mikkoh.com",
+    "url": "https://github.com/mikkoh"
+  },
+  "dependencies": {
+    "browserify": "^8.1.3",
+    "express": "^4.11.2",
+    "express-static": "^1.0.3",
+    "find-modules": "^0.1.0",
+    "marked": "^0.3.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "node test.js"
+  },
+  "bin": {
+    "docs-now": "index.js"
+  },
+  "keywords": [
+    "documentation,docs,viewer,md,markdown"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mikkoh/docs-now.git"
+  },
+  "homepage": "https://github.com/mikkoh/docs-now",
+  "bugs": {
+    "url": "https://github.com/mikkoh/docs-now/issues"
+  }
+}
