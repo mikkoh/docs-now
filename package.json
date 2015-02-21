@@ -14,7 +14,9 @@
     "express": "^4.11.2",
     "express-static": "^1.0.3",
     "find-modules": "^0.1.0",
-    "marked": "^0.3.3"
+    "get-port": "^1.0.0",
+    "marked": "^0.3.3",
+    "open": "0.0.5"
   },
   "devDependencies": {},
   "scripts": {

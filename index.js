@@ -2,6 +2,8 @@
 
 var express = require( 'express' );
 var expressStatic = require( 'express-static' );
+var getPort = require( 'get-port' );
+var open = require( 'open' );
 var browserifyFrontend = require( './lib/browserifyFrontend' );
 var getModuleTree = require( './lib/getModuleTree' );
 var getReadme = require( './lib/getReadme' );
@@ -33,5 +35,15 @@ app.get( '/module/*', function( req, res ) {
 // browserify the frontend code and then start the server
 browserifyFrontend( function() {
   
-  app.listen( 8888 );  
+  getPort( function( err, port ) {
+
+    if( err ) {
+
+      port = 8888;
+    }
+
+    app.listen( port );
+
+    open( 'http://localhost:' + port );
+  });
 });
