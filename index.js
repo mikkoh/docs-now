@@ -4,46 +4,53 @@ var express = require( 'express' );
 var expressStatic = require( 'express-static' );
 var getPort = require( 'get-port' );
 var open = require( 'open' );
+var fs = require( 'fs' );
 var browserifyFrontend = require( './lib/browserifyFrontend' );
 var getModuleTree = require( './lib/getModuleTree' );
 var getReadme = require( './lib/getReadme' );
 var renderMarkdown = require( './lib/renderMarkdown' );
 
-var app = express();
+if( fs.existsSync( 'node_modules' ) ) {
 
-app.use( expressStatic( __dirname + '/frontend' ) );
+  var app = express();
 
-app.get( '/tree', function( req, res ) {
+  app.use( expressStatic( __dirname + '/frontend' ) );
 
-  getModuleTree( res.send.bind( res ) );
-}); 
+  app.get( '/tree', function( req, res ) {
 
-app.get( '/module/*', function( req, res ) {
+    getModuleTree( res.send.bind( res ) );
+  }); 
 
-  getReadme( req.params, function( markdown ) {
+  app.get( '/module/*', function( req, res ) {
 
-    if( markdown ) {
+    getReadme( req.params, function( markdown ) {
 
-      res.send( { ok: true, html: renderMarkdown( markdown ) } );  
-    } else {
+      if( markdown ) {
 
-      res.send( { ok: false } );
-    }
+        res.send( { ok: true, html: renderMarkdown( markdown ) } );  
+      } else {
+
+        res.send( { ok: false } );
+      }
+    });
   });
-});
 
-// browserify the frontend code and then start the server
-browserifyFrontend( function() {
-  
-  getPort( function( err, port ) {
+  // browserify the frontend code and then start the server
+  browserifyFrontend( function() {
+    
+    getPort( function( err, port ) {
 
-    if( err ) {
+      if( err ) {
 
-      port = 8888;
-    }
+        port = 8888;
+      }
 
-    app.listen( port );
+      app.listen( port );
 
-    open( 'http://localhost:' + port );
+      open( 'http://localhost:' + port );
+    });
   });
-});
+} else {
+
+  console.log( 'This folder doesn\'t contain a node_modules folder' );
+}
