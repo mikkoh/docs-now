@@ -19,5 +19,6 @@
     "vue": "^0.11.5",
     "xhr-json": "^2.2.4"
   },
-  "devDependencies": {}
+  "devDependencies": {},
+  "private": true
 }
