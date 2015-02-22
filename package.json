@@ -17,7 +17,15 @@
     "get-port": "^1.0.0",
     "highlight.js": "^8.4.0",
     "marked": "^0.3.3",
-    "open": "0.0.5"
+    "open": "0.0.5",
+    "bigwheel": "^1.2.1",
+    "bluebird": "^2.9.12",
+    "dom-remove": "^1.1.0",
+    "dom-select": "0.0.0",
+    "get-object-path": "0.0.2",
+    "gsap": "^1.15.1",
+    "vue": "^0.11.5",
+    "xhr-json": "^2.2.4"
   },
   "devDependencies": {},
   "scripts": {
