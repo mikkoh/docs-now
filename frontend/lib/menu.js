@@ -73,8 +73,6 @@ module.exports = {
       moduleName = model.menu.tree.moduleName;
     }
 
-    console.log( moduleName );
-
     treePart = getTreePart();
 
     updateVueData();
