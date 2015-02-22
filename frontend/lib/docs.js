@@ -1,6 +1,9 @@
 var vue = require( 'vue' );
-var model = require( './model' );
 var xhrJson = require( 'xhr-json' );
+var find = require( 'dom-select' );
+var remove = require( 'dom-remove' );
+var model = require( './model' );
+
 
 module.exports = docs;
 
@@ -10,13 +13,6 @@ docs.prototype = {
 
   init: function( req, done ) {
 
-    var docVue = this.docVue = new vue( {
-
-      el: '#docs-container',
-      template: '#docs-template',
-      ready: done
-    });
-
     xhrJson( '/module/' + req.splats[ 0 ] )
     .then( function( res ) {
 
@@ -24,12 +20,33 @@ docs.prototype = {
 
       if( data.ok ) {
 
-        docVue.$data = data;
+        var docVue = this.docVue = new vue( {
+
+          el: '#docs-container',
+          template: '#docs-template',
+          data: data,
+          attached: function() {
+
+            var allImageTags = find.all( 'img', this.$el );
+            var img;
+
+            for( var i = 0, len = allImageTags.length; i < len; i++ ) {
+
+              img = allImageTags[ i ];
+              img.onerror = function() {
+
+                remove( this );
+              }.bind( img );
+            }
+
+            done();
+          }
+        });
       } else {
 
         done();
       }
-    });
+    }.bind( this ));
   },
 
   destroy: function( req, done ) {

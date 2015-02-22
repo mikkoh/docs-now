@@ -12,6 +12,8 @@
   "dependencies": {
     "bigwheel": "^1.2.1",
     "bluebird": "^2.9.10",
+    "dom-remove": "^1.1.0",
+    "dom-select": "0.0.0",
     "get-object-path": "0.0.2",
     "vue": "^0.11.5",
     "xhr-json": "^2.2.4"
