@@ -36,10 +36,10 @@ var getTreePart = function() {
 
   if( path.length > 0 ) {
 
-    return get( model.menu.tree, path );  
+    return get( model.menu.tree.modules, path );  
   } else {
 
-    return model.menu.tree;
+    return model.menu.tree.modules;
   }
 };
 
@@ -63,15 +63,17 @@ module.exports = {
 
   init: function( req, done ) {
 
-    if( req.splats.length > 0 ) {
+    if( req.splats[ 0 ] != '' ) {
 
       path = req.splats[ 0 ].split( '/' );  
       moduleName = path[ path.length - 1 ];
     } else {
 
       path = [];
-      moduleName = null;
+      moduleName = model.menu.tree.moduleName;
     }
+
+    console.log( moduleName );
 
     treePart = getTreePart();
 

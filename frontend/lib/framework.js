@@ -6,7 +6,6 @@ module.exports = bigwheel( function( done ) {
 
     routes: {
 
-      '/': require( './menu' ),
       '/*': { section: [ require( './menu' ), require( './docs' ) ], duplicate: true }
     }
   });
