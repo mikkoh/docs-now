@@ -1,6 +1,6 @@
 {
   "name": "docs-now",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "readme.md is the documentation format for NPM Modules. View readme.md in the browser as if they were documentation",
   "main": "index.js",
   "license": "MIT",
@@ -28,8 +28,7 @@
     "xhr-json": "^2.2.4"
   },
   "devDependencies": {},
-  "scripts": {
-  },
+  "scripts": {},
   "bin": {
     "docs-now": "index.js"
   },
