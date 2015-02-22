@@ -1,7 +1,7 @@
 {
   "name": "docs-now",
   "version": "1.0.0",
-  "description": "Render markdown for all modules used in a project in the browser",
+  "description": "readme.md is the documentation format for NPM Modules. View readme.md in the browser as if they were documentation",
   "main": "index.js",
   "license": "MIT",
   "author": {
