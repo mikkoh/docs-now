@@ -21,7 +21,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "node test.js"
+    "install": "cd frontend && npm i"
   },
   "bin": {
     "docs-now": "index.js"

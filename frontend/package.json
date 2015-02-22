@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "bigwheel": "^1.2.1",
-    "bluebird": "^2.9.10",
+    "bluebird": "^2.9.12",
     "dom-remove": "^1.1.0",
     "dom-select": "0.0.0",
     "get-object-path": "0.0.2",
