@@ -44,6 +44,11 @@ pre {
   margin-bottom: 30px;
 }
 
+:not( pre ) > code {
+
+  background-color: #EEE;
+}
+
 a {
 
   color: #adb6c2;

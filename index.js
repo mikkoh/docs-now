@@ -48,6 +48,8 @@ if( fs.existsSync( 'node_modules' ) ) {
       app.listen( port );
 
       open( 'http://localhost:' + port );
+
+      console.log( 'docs-now is running at http://localhost:' + port );
     });
   });
 } else {
