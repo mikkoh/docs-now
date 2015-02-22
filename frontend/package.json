@@ -15,6 +15,7 @@
     "dom-remove": "^1.1.0",
     "dom-select": "0.0.0",
     "get-object-path": "0.0.2",
+    "gsap": "^1.15.1",
     "vue": "^0.11.5",
     "xhr-json": "^2.2.4"
   },

@@ -58,7 +58,6 @@ a {
   color: #DB1847;
 
   font-size: 18px;
-  padding: 20px;
 
   position: absolute;
   left: 0px;
@@ -67,6 +66,21 @@ a {
   height: 100%;
   overflow-x: hidden;
   overflow-y: scroll;
+}
+
+.container {
+
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  opacity: 0;
+
+  padding: 20px;
+}
+
+#menu-container .container {
+
+  width: 200px;
 }
 
 #menu-container h1 {
@@ -81,11 +95,10 @@ a {
 
 #docs-container {
 
-  padding: 20px;
-
   position: absolute;
   left: 220px;
   top: 0px;
+  width: calc( 100% - 220px );
   height: 100%;
   overflow: scroll;
 }
