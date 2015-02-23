@@ -54,6 +54,11 @@ a {
   color: #adb6c2;
 }
 
+img {
+
+  max-width: 100%;
+}
+
 
 
 
@@ -67,7 +72,7 @@ a {
   position: absolute;
   left: 0px;
   top: 0px;
-  width: 200px;
+  width: 240px;
   height: 100%;
   overflow-x: hidden;
   overflow-y: scroll;
@@ -101,9 +106,14 @@ a {
 #docs-container {
 
   position: absolute;
-  left: 220px;
+  left: 240px;
   top: 0px;
-  width: calc( 100% - 220px );
+  width: calc( 100% - 240px );
   height: 100%;
   overflow: scroll;
+}
+
+#docs-container .container {
+
+  width: calc( 100% - 40px );
 }
