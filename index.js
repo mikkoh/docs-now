@@ -9,6 +9,8 @@ var browserifyFrontend = require( './lib/browserifyFrontend' );
 var getModuleTree = require( './lib/getModuleTree' );
 var getReadme = require( './lib/getReadme' );
 var renderMarkdown = require( './lib/renderMarkdown' );
+var getFolderPathFromSplat = require( './lib/getFolderPathFromSplat' );
+var getPackageJSON = require( './lib/getPackageJSON' );
 
 if( fs.existsSync( 'node_modules' ) ) {
 
@@ -23,15 +25,20 @@ if( fs.existsSync( 'node_modules' ) ) {
 
   app.get( '/module/*', function( req, res ) {
 
-    getReadme( req.params, function( markdown ) {
+    var modulePath = getFolderPathFromSplat( req.params[ 0 ] );
 
-      if( markdown ) {
+    getPackageJSON( modulePath, function( packageJSON ) {
 
-        res.send( { ok: true, html: renderMarkdown( markdown ) } );  
-      } else {
+      getReadme( getFolderPathFromSplat( req.params[ 0 ] ), function( markdown ) {
 
-        res.send( { ok: false } );
-      }
+        if( markdown ) {
+
+          res.send( { ok: true, html: renderMarkdown( markdown, packageJSON ) } );  
+        } else {
+
+          res.send( { ok: false } );
+        }
+      });
     });
   });
 
