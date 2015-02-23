@@ -17,7 +17,7 @@ docs.prototype = {
     .then( function( res ) {
 
       var data = res.body;
-
+// 
       if( data.ok ) {
 
         var containerDoc = find( '#docs-container' );
@@ -38,36 +38,28 @@ docs.prototype = {
             var numLoaded = 0;
             var img;
 
-            var imgFinish = function() {
-
-              if( ++numLoaded == allImageTags.length ) {
-
-                done();
-              }
-            };
-
             if( allImageTags.length > 0 ) {
 
               for( var i = 0, len = allImageTags.length; i < len; i++ ) {
 
                 img = allImageTags[ i ];
+                img.style.opacity = 0;
+                // imt.style.visibility = 'hidden';
 
                 img.onload = function() {
 
-                  imgFinish();
-                };
+                  // imt.style.visibility = 'visible';
+                  Tween.to( this, 0.5, { opacity: 1, ease: Expo.easeOut } );
+                }.bind( img );
 
                 img.onerror = function() {
 
                   remove( this );
-
-                  imgFinish();
                 }.bind( img );
               }  
-            } else {
-
-              done();
             }
+
+            done();
           }
         });
       } else {
