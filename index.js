@@ -12,54 +12,49 @@ var renderMarkdown = require( './lib/renderMarkdown' );
 var getFolderPathFromSplat = require( './lib/getFolderPathFromSplat' );
 var getPackageJSON = require( './lib/getPackageJSON' );
 
-if( fs.existsSync( 'node_modules' ) ) {
 
-  var app = express();
+var app = express();
 
-  app.use( expressStatic( __dirname + '/frontend' ) );
+app.use( expressStatic( __dirname + '/frontend' ) );
 
-  app.get( '/tree', function( req, res ) {
+app.get( '/tree', function( req, res ) {
 
-    getModuleTree( res.send.bind( res ) );
-  }); 
+  getModuleTree( res.send.bind( res ) );
+}); 
 
-  app.get( '/module/*', function( req, res ) {
+app.get( '/module/*', function( req, res ) {
 
-    var modulePath = getFolderPathFromSplat( req.params[ 0 ] );
+  var modulePath = getFolderPathFromSplat( req.params[ 0 ] );
 
-    getPackageJSON( modulePath, function( packageJSON ) {
+  getPackageJSON( modulePath, function( packageJSON ) {
 
-      getReadme( getFolderPathFromSplat( req.params[ 0 ] ), function( markdown ) {
+    getReadme( getFolderPathFromSplat( req.params[ 0 ] ), function( markdown ) {
 
-        if( markdown ) {
+      if( markdown ) {
 
-          res.send( { ok: true, html: renderMarkdown( markdown, packageJSON ) } );  
-        } else {
+        res.send( { ok: true, html: renderMarkdown( markdown, packageJSON ) } );  
+      } else {
 
-          res.send( { ok: false } );
-        }
-      });
-    });
-  });
-
-  // browserify the frontend code and then start the server
-  browserifyFrontend( function() {
-    
-    getPort( function( err, port ) {
-
-      if( err ) {
-
-        port = 8888;
+        res.send( { ok: false } );
       }
-
-      app.listen( port );
-
-      open( 'http://localhost:' + port );
-
-      console.log( 'docs-now is running at http://localhost:' + port );
     });
   });
-} else {
+});
 
-  console.log( 'This folder doesn\'t contain a node_modules folder' );
-}
+// browserify the frontend code and then start the server
+browserifyFrontend( function() {
+  
+  getPort( function( err, port ) {
+
+    if( err ) {
+
+      port = 8888;
+    }
+
+    app.listen( port );
+
+    open( 'http://localhost:' + port );
+
+    console.log( 'docs-now is running at http://localhost:' + port );
+  });
+});
